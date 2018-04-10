@@ -1,9 +1,8 @@
 var underscore = require('underscore');
 var express = require('express');
 var app = express();
-
-
 var bodyParser = require('body-parser');
+
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
@@ -20,6 +19,31 @@ app.get('/template', (req, res) => {
   var obj = {name:'조성관',age:'23'};
   res.send(tpl(obj));
 });
+
+//http://localhost:8080/rowcol?row=4&col=6
+app.get('/rowcol', (req, res) => {
+  res.charset = 'UTF-8';
+  var checkbox = '<input type = "checkbox">';
+  var col = req.query.col;
+  var row = req.query.row;
+  var string = '';
+  var result = '';
+
+  string += '<form>';
+
+  for (var i=0;i<col;i++){
+  string += checkbox;
+  }
+  string += '</form>';
+
+  for (var i = 0; i < row ; i ++){
+    result += string;
+  }
+  res.send(result);
+
+});
+
+
 
 app.post('/', (req, res) => {
   res.charset = 'UTF-8';
