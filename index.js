@@ -30,7 +30,6 @@ app.get('/rowcol', (req, res) => {
   var result = '';
 
   string += '<form>';
-
   for (var i=0;i<col;i++){
   string += checkbox;
   }

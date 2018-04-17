@@ -21,8 +21,7 @@
   },
   "homepage": "https://github.com/kyagrd/web0410#readme",
   "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.3",
-    "underscore": "^1.8.3"
+    "body-parser": "^1.18.2", //프로그램이 자체적으로 파악 후 적용
+    "express": "^4.16.3"
   }
 }

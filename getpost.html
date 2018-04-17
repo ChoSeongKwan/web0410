@@ -5,24 +5,52 @@
 </head>
 
 <body>
-<p>
-<form method="get" action="http://localhost:8080/">
-
-  <label for="name">GET으로 보낼 name:</label>
-  <input type="text" name="name" value="SeongKwan Cho">
-  <input type="submit">
-
-</form>
+  <script id='template' style='text/template'>
+  <p>아래에 생성된 폼은 다음 주소로 요청을 보냅니다.
+  <pre><%=url%></pre>
 </p>
+  <p>
+  <form method="get" action="%=url%">
+    <label for="name">GET으로 보낼 name:</label>
+    <input type="text" name="name" value="SeongKwan Cho">
+    <input type="submit">
+  </form>
+  </p>
 
+  <p>
+  <form method="post" action="%=url%">
+    <label for="name">POST로 보낼 name:</label>
+    <input type="text" name="name" value="SeongKwan Cho">
+    <input type="submit">
+  </form>
+  </p>
+</script>
 
-<p>
-<form method="post" action="http://localhost:8080/">
-  <label for="name">POST로 보낼 name:</label>
-  <input type="text" name="name" value="SeongKwan Cho">
-  <input type="submit">
-</form>
-</p>
+  <p>
+    <form>
+      <label>URL:</label>
+      <input id="url" type="text">
+      <input id="urlsubmit" type = "submit" value="GET/POST 폼 생성">
+    </form>
+  </p>
+
+<div id='templateTarget'></div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js' />
+  
+<script>
+var tplContent = document.querySelector('#template').textContent;
+var tpl = _.template(tplContent);
+var tplTarget = document.querySelector('#templateTarget');
+
+fucntion generateForms(){
+  tplTarget.innerHTML = tpl({url:'안기영'});
+}
+var urlsubmit = document.querySelector(#urlsubmit);
+urlsubmit.addEventListener('click',generateForms);
+
+</script>
+
 
 </body>
 </html>
